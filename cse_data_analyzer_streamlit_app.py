@@ -444,14 +444,11 @@ st.caption("Made for the Colombo Stock Exchange. Bring your own data sources.")
 import streamlit as st
 import pandas as pd
 
-@st.cache_data
-def load_data():
-    df = pd.read_csv("your_dataset.csv")
-    return df
+if symbol_frames:
+    st.subheader("Uploaded Data Preview")
+    for sym, df in symbol_frames.items():
+        st.write(f"### {sym}")
+        st.dataframe(df.reset_index())  # show uploaded data
+else:
+    st.info("Upload CSV files from the sidebar to see data here.")
 
-data = load_data()
-st.dataframe(data)
-if st.button("Load Analysis"):
-    # heavy computation here
-    result = some_expensive_function()
-    st.write(result)
