@@ -441,3 +441,17 @@ with main_tabs[4]:
     )
 
 st.caption("Made for the Colombo Stock Exchange. Bring your own data sources.")
+import streamlit as st
+import pandas as pd
+
+@st.cache_data
+def load_data():
+    df = pd.read_csv("your_dataset.csv")
+    return df
+
+data = load_data()
+st.dataframe(data)
+if st.button("Load Analysis"):
+    # heavy computation here
+    result = some_expensive_function()
+    st.write(result)
