@@ -5,3 +5,5 @@ numpy==2.0.2
 matplotlib==3.10.0
 plotly==5.24.1
 scikit-learn==1.6.1
+
+#trigger rebuild
